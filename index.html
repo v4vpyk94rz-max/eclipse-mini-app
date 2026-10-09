@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100608">
+<title>ECLIPSE</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#100608;
+  color:#f4e8e9;
+  font-family:Georgia,'Times New Roman',serif;
+}
+.screen{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:28px 22px;
+  text-align:center;
+}
+#intro{
+  background:radial-gradient(ellipse at center,#48151f 0%,#1b080d 48%,#080608 100%);
+}
+.eyebrow{
+  font:10px Arial,sans-serif;
+  letter-spacing:5px;
+  color:#bd9299;
+  margin-bottom:24px;
+}
+h1{
+  font-size:clamp(48px,15vw,82px);
+  font-weight:normal;
+  letter-spacing:9px;
+  margin:0 0 16px;
+  text-shadow:0 0 35px #8b263d;
+  animation:appear 2s ease both;
+}
+.subtitle{
+  font-size:12px;
+  letter-spacing:3px;
+  color:#c5a7ac;
+  line-height:2;
+}
+button{
+  border:1px solid #9d5966;
+  color:#f8edef;
+  background:#42131e;
+  padding:17px 25px;
+  letter-spacing:3px;
+  font-size:11px;
+  margin-top:45px;
+  cursor:pointer;
+}
+button:active{background:#702337}
+.note{
+  font:9px Arial,sans-serif;
+  letter-spacing:3px;
+  color:#98777d;
+  margin-top:35px;
+}
+#music{display:none;background:linear-gradient(#280b12,#090609)}
+h2{
+  font-size:30px;
+  font-weight:normal;
+  letter-spacing:6px;
+  margin:0 0 12px;
+}
+.line{
+  width:65px;
+  border-top:1px solid #9d5966;
+  margin:20px auto 30px;
+}
+.track{
+  width:100%;
+  max-width:420px;
+  border-bottom:1px solid #49212a;
+  padding:22px 5px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:left;
+}
+.track strong{font-size:18px;font-weight:normal}
+.track small{
+  display:block;
+  color:#a8888e;
+  font:9px Arial,sans-serif;
+  letter-spacing:2px;
+  margin-top:7px;
+}
+.track button{
+  margin:0;
+  padding:12px;
+  min-width:76px;
+}
+#player{width:100%;max-width:420px;margin-top:35px}
+audio{width:100%;margin-top:15px}
+.back{
+  background:transparent;
+  border-color:#55303a;
+  margin-top:30px;
+}
+@keyframes appear{
+  from{opacity:0;letter-spacing:18px}
+  to{opacity:1;letter-spacing:9px}
+}
+</style>
+</head>
+<body>
+<section class="screen" id="intro">
+  <div class="eyebrow">A MUSICAL EXPERIENCE</div>
+  <h1>ECLIPSE</h1>
+  <div class="subtitle">
+    SOMEWHERE BETWEEN<br>
+    HEAVEN AND HELL
+  </div>
+  <button onclick="enter()">ENTER THE ECLIPSE</button>
+  <div class="note">BEAUTY IN DESTRUCTION</div>
+</section>
+
+<section class="screen" id="music">
+  <div class="eyebrow">WELCOME TO THE DARK SIDE</div>
+  <h2>ECLIPSE</h2>
+  <div class="subtitle">THE SAME SOUL<br>IN A DIFFERENT BODY</div>
+  <div class="line"></div>
+
+  <div class="track">
+    <div><strong>01 — Зима</strong><small>TRACK 01</small></div>
+    <button onclick="playTrack(0)">PLAY ↗</button>
+  </div>
+
+  <div class="track">
+    <div><strong>02 — Нечисть</strong><small>TRACK 02</small></div>
+    <button onclick="playTrack(1)">PLAY ↗</button>
+  </div>
+
+  <div class="track">
+    <div><strong>03 — ???</strong><small>COMING SOON</small></div>
+    <span style="color:#8b6670">✧</span>
+  </div>
+
+  <div id="player">
+    <div class="eyebrow">NOW PLAYING</div>
+    <div id="trackTitle">Выбери трек</div>
+    <audio id="audio" controls preload="none"></audio>
+    <div class="subtitle" style="font-size:10px;margin-top:12px">
+      AUDIO WILL BE ADDED SOON
+    </div>
+  </div>
+
+  <button class="back" onclick="goBack()">← BACK TO THE BEGINNING</button>
+</section>
+
+<script>
+function enter(){
+  document.getElementById('intro').style.display='none';
+  document.getElementById('music').style.display='flex';
+  window.scrollTo(0,0);
+}
+function goBack(){
+  document.getElementById('music').style.display='none';
+  document.getElementById('intro').style.display='flex';
+  window.scrollTo(0,0);
+}
+function playTrack(n){
+  const names=['Зима','Нечисть'];
+  document.getElementById('trackTitle').textContent=names[n];
+  document.getElementById('audio').scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
